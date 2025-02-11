@@ -1,0 +1,62 @@
+.header-wrapper{
+ padding: 5px 15px 5px 15px;
+ position: sticky;
+ top: 0px;
+ left:0px;
+ display: flex;
+ justify-content: space-between;
+ align-items: center;
+ background: #FFFFFF;
+ border-bottom:solid #ececec 1px;
+}
+.brand-container{
+  
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+align-items: center;
+gap: 10px;
+}
+.brandIcon{
+    border:solid #ECECEC 1px;
+    padding: 5px;
+    width: 45px;
+    height: 45px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.2rem;
+    font-weight: 800;
+    border-radius: 5px;
+    background: #ECECEC;
+}
+.settings-container{
+    display: flex;
+    align-items: center;
+    background: white;
+    padding: 5px;
+    border-radius: 8px;
+}
+.github-logo {
+    width: 24px;
+    height: 24px;
+}
+.setting-item {
+    margin-left: 10px;
+}
+
+.git-button {
+    background: transparent;
+    border: none;
+    cursor: pointer;
+}
+
+.theme-selector {
+    padding: 5px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background:lightgray;
+    cursor: pointer;
+    margin-left: 10px;
+
+}
