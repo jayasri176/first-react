@@ -6,7 +6,7 @@
  display: flex;
  justify-content: space-between;
  align-items: center;
- background: #FFFFFF;
+ background: #0f1114;
  border-bottom:solid #ececec 1px;
 }
 .brand-container{
@@ -18,37 +18,43 @@ align-items: center;
 gap: 10px;
 }
 .brandIcon{
-    border:solid #ECECEC 1px;
     padding: 5px;
-    width: 45px;
-    height: 45px;
     display: flex;
     justify-content: center;
     align-items: center;
     font-size: 1.2rem;
     font-weight: 800;
     border-radius: 5px;
-    background: #ECECEC;
 }
 .settings-container{
     display: flex;
+    justify-content: flex-end;
     align-items: center;
-    background: white;
+    width: 100%;
     padding: 5px;
     border-radius: 8px;
+    gap: 10px;
 }
 .github-logo {
     width: 24px;
     height: 24px;
 }
-.setting-item {
-    margin-left: 10px;
-}
 
 .git-button {
     background: transparent;
-    border: none;
+    border: solid #30384080 1px;
     cursor: pointer;
+    width: 35px;
+    border-radius: 10px;
+    height: 35px;
+    display: flex;
+    padding: 2px;
+    justify-content: center;
+    align-items: center;
+    background: #1d212633;
+}
+.git-button svg{
+    fill: #ffffff !important;
 }
 
 .theme-selector {
