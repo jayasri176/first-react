@@ -1,6 +1,6 @@
 import { useState } from "react"
 import "./topbar.css"
-import { GitHubIcon, Logo } from "../../../comman/icons/comman";
+import { GitHubIcon, Logo, SettingIcon } from "../../../comman/icons/comman";
 const TopBar = () => {
     const [selectedTheme, setSelectedTheme] = useState("dark");
     const [openRightDrawer, setOpenRightDrawer] = useState(false)
@@ -14,7 +14,8 @@ const TopBar = () => {
         {
             label: 'Theme',
             type: 'right-drawer',
-            icon: <GitHubIcon />,
+            isPartSetting:true,
+            icon: <SettingIcon />,
             onClick:()=>{setOpenRightDrawer(!openRightDrawer)},
             options: [
                 {
@@ -65,7 +66,24 @@ const TopBar = () => {
 
             {
                 openRightDrawer?
-                <div className="w-full p-4" style={{border:'solid red 1px',position:'fixed', top:0, left:0, width:'100%', height:'100%'}}></div>
+                <div className="model-wrapper">
+                     <div className="mode-container" style={{padding:'15px',background:'#0f1214', borderRadius:'15px 0px 0px 15px', boxShadow:'red', height:'100%',width:'350px', border:'solid rgba(61, 71, 81, 0.3) 1px',display:'flex',justifyContent:'flex-start', alignItems:'center', flexDirection:'column', gap:'15px'}}>
+                          <div className="model-top-container" style={{width:'100%',display:'flex',justifyContent:'center',alignItems:'center'}}>
+                              <h2 className="model-heading" style={{color:'#FFF', textAlign:'left',width:'100%',margin:'0px'}}>Settings</h2>
+                              <button className="model-close" onClick={()=>setOpenRightDrawer(!openRightDrawer)} style={{border:'none',background:'none',width:'35px',height:'35px',display:'flex',justifyContent:'center',alignItems:'center', fontSize:'18px',fontWeight:'600',color:'#FFF'}}>X</button>
+                          </div>
+                          <hr/>
+                          <div  className="model-body" style={{width:'100%'}}>
+                               {
+                                settings?.map((n, i)=> n?.isPartSetting && <div className="model-theme" key={i} style={{display:'flex',justifyContent:'space-between', alignItems:'center', gap:'0px', border:'solid rgba(61, 71, 81, 0.3) 1px'}}>
+                                      {
+                                        n?.options?.map((item, j)=><button onClick={()=>{setSelectedTheme(item?.value)}} key={j} className="theme-button" style={{width:'100%', padding:'15px',borderRadius:'5px', fontSize:'16px',fontWeight:'600', textAlign:'center', background:selectedTheme === item?.value?'#FFF':'transparent',color:selectedTheme === item?.value?'#000':'#FFFF',border:'none', borderRight:'solid rgba(61, 71, 81, 0.3) 1px'}}>{item?.label}</button>)
+                                      }
+                                </div>)
+                               }
+                          </div>
+                     </div>
+                </div>
                 :null
             }
         </header>
