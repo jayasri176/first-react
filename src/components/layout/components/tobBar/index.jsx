@@ -1,9 +1,12 @@
 import { useState } from "react"
-import "./topbar.css"
+import styles from "./topbar.module.css"
+import menuStyles from "./menu.module.scss"
 import { GitHubIcon, Logo, SettingIcon } from "../../../comman/icons/comman";
+import { FiMenu, FiX } from "react-icons/fi";
 const TopBar = () => {
     const [selectedTheme, setSelectedTheme] = useState("dark");
-    const [openRightDrawer, setOpenRightDrawer] = useState(false)
+    const [openRightDrawer, setOpenRightDrawer] = useState(false);
+    const [menuOpen, setMenuOpen] = useState(false);
     const settings = [
         {
             label: 'Git',
@@ -12,11 +15,37 @@ const TopBar = () => {
             link: 'https://github.com/jayasri176/first-react'
         },
         {
+            label: 'Menu',
+            isMenu: true,
+            items: [
+                {
+                    label: 'Home',
+                    link: '/',
+                    isExternal: false,
+                },
+                {
+                    label: 'About Us',
+                    link: '/about-us',
+                    isExternal: false,
+                },
+                {
+                    label: 'Protfolio',
+                    link: '/protfolio',
+                    isExternal: false,
+                },
+                {
+                    label: 'Contact Us',
+                    link: '/contact-us',
+                    isExternal: false,
+                }
+            ]
+        },
+        {
             label: 'Theme',
             type: 'right-drawer',
-            isPartSetting:true,
+            isPartSetting: true,
             icon: <SettingIcon />,
-            onClick:()=>{setOpenRightDrawer(!openRightDrawer)},
+            onClick: () => { setOpenRightDrawer(!openRightDrawer) },
             options: [
                 {
                     label: 'Dark',
@@ -35,25 +64,45 @@ const TopBar = () => {
     ]
 
     return (
-        <header className="container-fluid header-wrapper">
-            <div className="brand-container">
+        <header className={`container-fluid ${styles['header-wrapper']}`}>
+            <div className={styles['brand-container']}>
                 {/* //brand */}
-                <div className="brandIcon">
+                <button onClick={()=>setMenuOpen(!menuOpen)}  className={`${styles['git-button']} ${menuStyles['mobile-menu-icon']}`}>
+                <FiMenu />
+                </button>
+                <div className={styles.brandIcon}>
                     <Logo />
                 </div>
             </div>
+            <div className={`${menuStyles['menu-wrapper']} ${menuOpen?menuStyles['menu-wrapper-active']:``}`}>
 
-            <div className="settings-container" >
                 {
-                    settings?.map((n, i) => <div key={i} className="setting-item">
+                    settings?.map((n, i) => n?.isMenu && <ul key={i} className={menuStyles['menu-container']}>
+                        <li className={`${menuStyles['mobile-header-container']}`}>
+                        
+                            <div className={menuStyles.brandIcon}>
+                                <Logo />
+                            </div>
+                            <hr/>
+                            <button onClick={()=>setMenuOpen(!menuOpen)} className={menuStyles['close-button']}><FiX /></button>
+                        </li>
+                        {
+                            n?.items?.map((link, j) => <li key={j} className={menuStyles['menu-item']}>{link?.label}</li>)
+                        }
+                    </ul>)
+                }
+            </div>
+            <div className={styles['settings-container']} >
+                {
+                    settings?.map((n, i) => !n?.isMenu && <div key={i} className="setting-item">
                         {
                             n?.type === 'external-link' ?
-                                <a target="_blank" href={n?.link} rel="noreferrer" className="git-button">
+                                <a target="_blank" href={n?.link} rel="noreferrer" className={styles['git-button']}>
                                     {n?.icon}
                                 </a>
 
                                 : n?.type === 'right-drawer' ?
-                                    <button className="git-button" onClick={()=>{n?.onClick()}}>
+                                    <button className={styles['git-button']} onClick={() => { n?.onClick() }}>
                                         {n?.icon}
                                     </button>
                                     : null
@@ -65,26 +114,28 @@ const TopBar = () => {
 
 
             {
-                openRightDrawer?
-                <div className="model-wrapper">
-                     <div className="model-container" >
-                          <div className="model-top-container" >
-                              <h2 className="model-heading" >Settings</h2>
-                              <button className="model-close" onClick={()=>setOpenRightDrawer(!openRightDrawer)} >X</button>
-                          </div>
-                          <hr/>
-                          <div  className="model-body" >
-                               {
-                                settings?.map((n, i)=> n?.isPartSetting && <div className="model-theme" key={i} >
-                                      {
-                                        n?.options?.map((item, j)=><button onClick={()=>{setSelectedTheme(item?.value)}} key={j} className="theme-button" >{item?.label}</button>)
-                                      }
-                                </div>)
-                               }
-                          </div>
-                     </div>
-                </div>
-                :null
+                openRightDrawer ?
+                    <div className={styles['model-wrapper']}>
+                        <div className={styles['model-container']} >
+                            <div className={styles['model-top-container']} >
+                                <h2 className={styles['model-heading']} >Settings</h2>
+                                <button className={styles['model-close']} onClick={() => setOpenRightDrawer(!openRightDrawer)} >
+                                    <FiX />
+                                </button>
+                            </div>
+                            <hr />
+                            <div className={styles['model-body']} >
+                                {
+                                    settings?.map((n, i) => n?.isPartSetting && <div className={styles['model-theme']} key={i} >
+                                        {
+                                            n?.options?.map((item, j) => <button onClick={() => { setSelectedTheme(item?.value) }} key={j} className={`${styles['theme-button']} ${selectedTheme === item?.value ? styles['active-button'] : ``}`} >{item?.label}</button>)
+                                        }
+                                    </div>)
+                                }
+                            </div>
+                        </div>
+                    </div>
+                    : null
             }
         </header>
     )
