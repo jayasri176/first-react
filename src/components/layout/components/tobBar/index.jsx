@@ -67,7 +67,7 @@ const TopBar = () => {
             {
                 openRightDrawer?
                 <div className="model-wrapper">
-                     <div className="mode-container" >
+                     <div className="model-container" >
                           <div className="model-top-container" >
                               <h2 className="model-heading" >Settings</h2>
                               <button className="model-close" onClick={()=>setOpenRightDrawer(!openRightDrawer)} >X</button>
