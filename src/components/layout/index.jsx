@@ -1,31 +1,29 @@
+import React, { useEffect, useState } from "react"
 import SideBar from "./components/sideBar"
 import TopBar from "./components/tobBar"
 
 const Layout = () => { //arrow function components this following ES6 standard
+    const [count, setCount] = useState(0);
+
+    useEffect(()=>{
+        let previousCount = localStorage.getItem("count");
+        if(previousCount){
+            setCount(Number(previousCount))
+        }
+    }, [])
     return (
         <>
             <TopBar  />
             <SideBar />
-           
             <main className="container-fluid p-4">
-             
+                <button onClick={()=>{
+                    let newCount = (count+1)
+                    localStorage.setItem("count", newCount);
+                    setCount(newCount)
+                }}>Increase Count</button>
+                <p style={{color:'red'}}>Count: {count}</p>
             </main>
         </>
     )
 }
-//jsx syntax: html and js and css combiner and written in one file is called JSX, and JSX is follow the markupof html and jsx is used as extension
-
-{/*  /this is multiline comment in react
-function Layout(){ //functionaly compoents this is normal js standard
-// this is line comment in react
-    return(
-        <>
-          <TopBar/>
-          <SideBar/>
-          <main className="container" style={{border:'solid red 1px'}}>
-          </main>
-        </>
-    )
-}
-*/}
 export default Layout
