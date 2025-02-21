@@ -8,7 +8,7 @@ const Layout = () => { //arrow function components this following ES6 standard
     const {userUniqueId} = userId()
     console.log("userUniqueId", userUniqueId)
     const [count, setCount] = useState(0);
-    const inputValueRef= useRef(null);
+    // const inputValueRef= useRef(null);
     useEffect(() => {
         let previousCount = localStorage.getItem("count");
         if (previousCount) {
@@ -27,9 +27,9 @@ const Layout = () => { //arrow function components this following ES6 standard
     // }, [count])
 
 
-    const Percentage = useMemo(() => {
-        return (count * 100) / 100
-    }, [count])
+    // const Percentage = useMemo(() => {
+    //     return (count * 100) / 100
+    // }, [count])
 
 
     const handleClick = useCallback((countNew) => {
@@ -39,12 +39,12 @@ const Layout = () => { //arrow function components this following ES6 standard
     }, [count])
 
  
-    const handleFormSubmit=()=>{
-        if(inputValueRef.current){
-            console.log("Parent Side-->",inputValueRef.current.getValue())
-        }
+    // const handleFormSubmit=()=>{
+    //     if(inputValueRef.current){
+    //         console.log("Parent Side-->",inputValueRef.current.getValue())
+    //     }
         
-    }
+    // }
 
     return (
         <>
@@ -56,13 +56,13 @@ const Layout = () => { //arrow function components this following ES6 standard
 
                 }}>Increase Count</button>
                 <p style={{ color: 'red' }}>Count: {count}</p>
-                <p style={{ color: 'black', fontWeight: 600 }}>Percentage: {
+                {/* <p style={{ color: 'black', fontWeight: 600 }}>Percentage: {
                     Percentage
-                }%</p>
-                <button onClick={() => { setCount(0); localStorage.setItem("count", 0) }}>Reset</button>
+                }%</p> */}
+                {/* <button onClick={() => { setCount(0); localStorage.setItem("count", 0) }}>Reset</button>
 <br/>
                 <CustomInput ref={inputValueRef}/>
-                <button onClick={()=>handleFormSubmit()}>Submit</button>
+                <button onClick={()=>handleFormSubmit()}>Submit</button> */}
             </main>
         </>
     )
