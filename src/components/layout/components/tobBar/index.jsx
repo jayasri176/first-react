@@ -1,12 +1,11 @@
-import React, { useContext, useState } from "react"
+import React, { useState } from "react"
 import styles from "./topbar.module.css"
 import menuStyles from "./menu.module.scss"
 import { GitHubIcon, Logo, SettingIcon } from "../../../comman/icons/comman";
 import { FiMenu, FiX } from "react-icons/fi";
-import { ThemeContext } from "../../../../contextProvider";
+import { Link } from "react-router-dom";
 const TopBar = () => {
-    const {color, changeTheme} = useContext(ThemeContext)
-    console.log("aaa===>", color)
+    const [selectedTheme, setSelectedTheme] = useState("light");
     const [openRightDrawer, setOpenRightDrawer] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
     const settings = [
@@ -89,7 +88,7 @@ const TopBar = () => {
                             <button onClick={()=>setMenuOpen(!menuOpen)} className={menuStyles['close-button']}><FiX /></button>
                         </li>
                         {
-                            n?.items?.map((link, j) => <li key={j} className={menuStyles['menu-item']}>{link?.label}</li>)
+                            n?.items?.map((link, j) => <li key={j} className={menuStyles['menu-item']}><a href={link?.link}>{link?.label}</a></li>)
                         }
                     </ul>)
                 }
@@ -130,7 +129,7 @@ const TopBar = () => {
                                 {
                                     settings?.map((n, i) => n?.isPartSetting && <div className={styles['model-theme']} key={i} >
                                         {
-                                            n?.options?.map((item, j) => <button onClick={() => { changeTheme(item?.value) }} key={j} className={`${styles['theme-button']} ${color === item?.value ? styles['active-button'] : ``}`} >{item?.label}</button>)
+                                            n?.options?.map((item, j) => <button onClick={() => { setSelectedTheme(item?.value) }} key={j} className={`${styles['theme-button']} ${selectedTheme === item?.value ? styles['active-button'] : ``}`} >{item?.label}</button>)
                                         }
                                     </div>)
                                 }

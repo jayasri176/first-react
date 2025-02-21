@@ -1,12 +1,23 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Layout from './components/layout';
-import ThemeProvider from './contextProvider';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import Home from './pages/home';
+import Protfolio from './pages/protfolio';
+import ContactUs from './pages/contactUs';
+import AboutUs from './pages/aboutUs';
 function App() {
   return ( //nesting component
-    <ThemeProvider>
-    <Layout/>
-    </ThemeProvider>
+    <Layout>
+       <BrowserRouter>
+          <Routes>
+              <Route path="/" element={<Home/>} />
+              <Route path="/about-us" element={<AboutUs/>} />
+              <Route path="/contact-us" element={<ContactUs/>} />
+              <Route path="/protfolio" element={<Protfolio/>} />
+          </Routes>
+       </BrowserRouter>
+    </Layout>
   );
 }
 
