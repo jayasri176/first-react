@@ -24,7 +24,7 @@ Hooks
 13: userId
 : used to create uniqueId for an element in the application
 
-5. useContext
+5. useContext: Provide the access to the context provider inside a component
 6. useReducer: Advanced version of useState hooks with reducer concept
 
 14. Custom Hook
