@@ -1,0 +1,46 @@
+.cardWrapper{
+   padding: 5px;
+   width: 24.3%;
+   text-decoration: none;
+}
+.cardBox{
+   background: #FFF;
+   border: solid #ECECEC 1px;
+   padding: 0px;
+   border-radius: 4px;
+   width: 100%;
+   box-shadow: #ECECEC 10px 10px 10px;
+}
+.cardImageBox{
+   border-radius: 4px 4px 0px 0px;
+   height: 250px;
+   width: 100%;
+}
+.image{
+  border-radius: 4px 4px 0px 0px;
+  height: 100%;
+  width: 100%;
+}
+.cardContextBox{
+   padding: 15px;
+   margin: 0px;
+   width: 100%;
+}
+.cardContextHeading{
+   font-weight: 700;
+   font-size: 20px;
+   text-align: left;
+   width: 100%;
+   color: black;
+}
+.cardContextPara{
+   font-weight: 400;
+   font-size: 16px;
+   color: black;
+   text-align: left;
+   width: 100%;
+   display: -webkit-box;
+   -webkit-line-clamp: 3;
+   -webkit-box-orient: vertical;  
+   overflow: hidden;
+}

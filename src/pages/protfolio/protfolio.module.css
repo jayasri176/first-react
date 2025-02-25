@@ -1,0 +1,8 @@
+.protfolioWrapper{
+   display: flex;
+   justify-content: flex-start;
+   align-items: center;
+   padding: 15px;
+   gap: 15px;
+   flex-wrap: wrap;
+}

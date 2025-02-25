@@ -1,0 +1,26 @@
+.byDefault{
+   padding: 4px 10px;
+   border-radius: 4px;
+   font-size: 10px;
+   font-weight: 600;
+   width: auto;
+   text-transform: uppercase;
+   margin: 0px;
+   text-align: center;
+   margin-bottom: 5px;
+}
+.neutral{
+   background: rgb(248, 210, 167);
+   border: solid rgb(243, 182, 156) 2px;
+   color: rgb(107, 54, 4);
+}
+.negative{
+   background: rgb(248, 167, 167);
+   border: solid rgb(243, 156, 156) 2px;
+   color: rgb(107, 16, 4);
+}
+.positive{
+   background: rgb(167, 248, 167);
+   border: solid rgb(156, 243, 156) 2px;
+   color: rgb(4, 107, 4);
+}

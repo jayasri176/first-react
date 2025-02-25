@@ -1,10 +1,11 @@
-import React, { useState } from "react"
+import React, {useEffect, useState } from "react"
 import styles from "./topbar.module.css"
 import menuStyles from "./menu.module.scss"
 import { GitHubIcon, Logo, SettingIcon } from "../../../comman/icons/comman";
 import { FiMenu, FiX } from "react-icons/fi";
-import { Link } from "react-router-dom";
+import { Link, useLocation} from "react-router-dom";
 const TopBar = () => {
+    const location = useLocation()
     const [selectedTheme, setSelectedTheme] = useState("light");
     const [openRightDrawer, setOpenRightDrawer] = useState(false);
     const [menuOpen, setMenuOpen] = useState(false);
@@ -63,7 +64,12 @@ const TopBar = () => {
             ]
         }
     ]
-
+    useEffect(()=>{
+        if(location?.pathname){
+            setOpenRightDrawer(false)
+            setMenuOpen(false)
+        }
+    }, [location])
     return (
         <header className={`container-fluid ${styles['header-wrapper']}`}>
             <div className={styles['brand-container']}>
@@ -76,7 +82,6 @@ const TopBar = () => {
                 </div>
             </div>
             <div className={`${menuStyles['menu-wrapper']} ${menuOpen?menuStyles['menu-wrapper-active']:``}`}>
-
                 {
                     settings?.map((n, i) => n?.isMenu && <ul key={i} className={menuStyles['menu-container']}>
                         <li className={`${menuStyles['mobile-header-container']}`}>
@@ -88,7 +93,7 @@ const TopBar = () => {
                             <button onClick={()=>setMenuOpen(!menuOpen)} className={menuStyles['close-button']}><FiX /></button>
                         </li>
                         {
-                            n?.items?.map((link, j) => <li key={j} className={menuStyles['menu-item']}><a href={link?.link}>{link?.label}</a></li>)
+                            n?.items?.map((link, j) => <li key={j} className={menuStyles['menu-item']}><Link to={link?.link} className={menuStyles['menu-item']}>{link?.label}</Link></li>)
                         }
                     </ul>)
                 }

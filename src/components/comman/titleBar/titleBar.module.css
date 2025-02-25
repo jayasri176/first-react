@@ -1,0 +1,11 @@
+.titleBarWrapper{
+   width: 100%;
+   padding: 15px;
+}
+.description{
+   font-size: 16px;
+   font-weight: 500;
+   line-height: normal;
+   text-align: left;
+   margin: 0px;
+}
