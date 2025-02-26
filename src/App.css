@@ -32,3 +32,15 @@ p{
   font-size: 14px;
   font-weight: normal;
 }
+.main_layout{
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+.full-main-section{
+  width: 100%;
+  padding: 15px;
+  height: 92.5vh;
+  min-height: auto;
+  overflow: auto;
+}

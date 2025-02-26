@@ -4,7 +4,7 @@ import menuStyles from "./menu.module.scss"
 import { GitHubIcon, Logo, SettingIcon } from "../../../comman/icons/comman";
 import { FiMenu, FiX } from "react-icons/fi";
 import { Link, useLocation} from "react-router-dom";
-const TopBar = () => {
+const TopBar = ({handleConditionalRouting}) => {
     const location = useLocation()
     const [selectedTheme, setSelectedTheme] = useState("light");
     const [openRightDrawer, setOpenRightDrawer] = useState(false);
@@ -66,6 +66,7 @@ const TopBar = () => {
     ]
     useEffect(()=>{
         if(location?.pathname){
+            handleConditionalRouting(location?.pathname?location?.pathname:"/")
             setOpenRightDrawer(false)
             setMenuOpen(false)
         }

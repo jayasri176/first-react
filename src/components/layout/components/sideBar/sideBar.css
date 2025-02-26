@@ -1,0 +1,8 @@
+.asideWrapper{
+   min-width: 300px;
+   border: solid blue 1px;
+   position: sticky;
+   top: 0px;
+   left: 0;
+   height: 92.5vh;
+}
