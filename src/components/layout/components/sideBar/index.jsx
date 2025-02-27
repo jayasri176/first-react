@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useState} from 'react'
 import './sideBar.css';
 const SideBar=()=>{
     const [active, setActive] = useState("Template store");
