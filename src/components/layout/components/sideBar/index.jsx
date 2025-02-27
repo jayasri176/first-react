@@ -4,8 +4,26 @@ const SideBar=()=>{
     const [active, setActive] = useState("Template store");
 
     const menuItems = [
-        "Git",
-        "React",
+      {
+        label:'Git',
+        slug:'',
+        subItems:[
+          {
+            label:'Introduction',
+            slug:'',
+            subItems:[
+              
+            ]
+          },
+          {
+            label:'Installation fo Git',
+            slug:'',
+            subItems:[
+              
+            ]
+          }
+        ]
+      }
     ];
     return(
         <aside className='asideWrapper'>
