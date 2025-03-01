@@ -12,13 +12,23 @@ const SideBar=()=>{
             label:'Introduction',
             slug:'',
             subItems:[
+              "Git Version Control",
+              "How to Installing Git",
+              "First Time Git Setup",
+              "Git Repository",
+              "Recording changes to the repository",
+              "Commit History",
+              "30 Minutes Self Studies Regarding Git",
               
             ]
           },
           {
-            label:'Installation fo Git',
+            label:'Git Advance',
             slug:'',
             subItems:[
+               "Stage & Snapshot",
+               "Tracking Path Changes",
+               "Ignoring Patterns",
               
             ]
           }
