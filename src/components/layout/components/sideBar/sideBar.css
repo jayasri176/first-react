@@ -4,7 +4,9 @@
    position: sticky;
    top: 0px;
    left: 0;
+   z-index: 1;
    height: 92.5vh;
+   overflow-y: auto;
 }
 
 .menu-item {
@@ -24,3 +26,87 @@
    color: #4f46e5;
    font-weight: bold;
  }
+
+ .navigationContainer{
+  padding: 15px 15px;
+  margin: 0px;
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  flex-direction: column;
+  width: 100%;
+  gap: 5px;
+  height: auto;
+ }
+ .chilNavitems{
+  padding: 0px 0px 0px 5px !important;
+  gap: 1px;
+ }
+ .navigationContainer li{
+  width: 100%;
+  padding: 5px 5px;
+  list-style: none;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: solid #ECECEC 1px;
+  cursor: pointer;
+
+ }
+ .navigationContainer.chilNavitems li{
+  padding: 0px 5px !important;
+ }
+ .navigationContainer .activeClass{
+  background: #ECECEC;
+  border-radius: 4px;
+  font-weight: 600;
+ }
+ .navigationContainer li.childIems{
+  padding: 5px 0px !important;
+ }
+ .navigationContainer li:last-child{
+  border: none !important;
+ }
+ .navigationContainer li .listWrapper{
+  width: 100%;
+  padding: 5px;
+  list-style: none;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+ }
+ .navigationContainer.chilNavitems li .listWrapper{
+  padding: 0px !important;
+ }
+ .navigationContainer li .listWrapper .iconClass{
+   width: 25px;
+   height: 25px;
+   display: flex;
+   justify-content: center;
+   color: #000;
+   cursor: pointer;
+   align-items: center;
+ }
+ .navigationContainer li .listWrapper .labelClass{
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+
+  font-size: 14px;
+  font-weight: 500;
+  color: #000;
+}
+.navigationContainer li .listWrapper .arrowClass{
+  width: 25px;
+  height: 25px;
+  display: flex;
+  cursor: pointer;
+
+  justify-content: center;
+  color: #000;
+  align-items: center;
+}
+.navigationContainer li .listWrapper  .rotateIcon{
+  transform: rotate(90deg);
+}

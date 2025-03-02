@@ -1,56 +1,62 @@
-import React, {useState} from 'react'
+import React, { useState } from 'react'
 import './sideBar.css';
-const SideBar=()=>{
-    const [active, setActive] = useState("Template store");
+import { GoChevronRight } from 'react-icons/go';
+const SideBar = () => {
+  const [active, setActive] = useState("");
 
-    const menuItems = [
-      {
-        label:'Git',
-        slug:'/git',
-        subItems:[
-          {
-            label:'Introduction',
-            slug:'/inroduction',
-            subItems:[
-              "Git Version Control",
-              "How to Installing Git",
-              "First Time Git Setup",
-              "Git Repository",
-              "Recording changes to the repository",
-              "Commit History",
-              "30 Minutes Self Studies Regarding Git",
-              
-            ]
-          },
-          {
-            label:'Git Advance',
-            slug:'/advance',
-            subItems:[
-               "Stage & Snapshot",
-               "Tracking Path Changes",
-               "Ignoring Patterns",
-              
-            ]
-          }
-        ]
-      }
-    ];
-    return(
-        <aside className='asideWrapper'>
-            <ul>
-        {menuItems.map((item, i) => (
-          <li
-            key={i}
-            className={`menu-item ${active === item?.slug ? "active" : ""}`}
-            onClick={() => setActive(item?.slug)}
-          >
-            {item?.label}
-          </li>
-        ))}
-      </ul>
-         
+  const menuItems = [
+    {
+      label: 'Git',
+      key: 'git',
+      subItems: [
+        {
+          label: 'Introduction',
+          key: 'git-introduction',
+          subItems: []
+        },
+        {
+          label: 'Installation of Git',
+          key: 'intallation-of-git',
+          subItems: [
 
-        </aside>
-    )
+          ]
+        }
+      ]
+    },
+  ];
+  return (
+    <aside className='asideWrapper'>
+      <MapNavItems list={menuItems} active={active} setActive={setActive} />
+    </aside>
+  )
 }
 export default SideBar;
+
+const MapNavItems = ({ className = '', isChild=false, list, active, setActive }) => {
+  return (
+    <ul className={`navigationContainer ${className}`}>
+      {list.map((item, i) => (
+        <li
+          key={i}
+          className={`${isChild?`childIems`:""}  ${active === item?.key ? "activeClass" : ""}`}
+          onClick={() => setActive(item?.key === active?'':item?.key)}
+        >
+          <div className='listWrapper'>
+            {item?.icon ? <div className='iconClass'></div> : null}
+            <label className='labelClass'>{item?.label}</label>
+            {
+              item?.subItems?.length ?
+                <GoChevronRight className={`arrowClass  ${active === item?.key ? `rotateIcon` : ""}`} />
+                : null
+            }
+          </div>
+          {
+            active === item?.key && item?.subItems?.length ?
+              <MapNavItems className="chilNavitems" isChild={true} list={item?.subItems} active={active} setActive={setActive} />
+              : null
+          }
+        </li>
+      ))}
+    </ul>
+  )
+}
