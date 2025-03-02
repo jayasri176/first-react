@@ -6,11 +6,11 @@ const SideBar=()=>{
     const menuItems = [
       {
         label:'Git',
-        slug:'',
+        slug:'/git',
         subItems:[
           {
             label:'Introduction',
-            slug:'',
+            slug:'/inroduction',
             subItems:[
               "Git Version Control",
               "How to Installing Git",
@@ -24,7 +24,7 @@ const SideBar=()=>{
           },
           {
             label:'Git Advance',
-            slug:'',
+            slug:'/advance',
             subItems:[
                "Stage & Snapshot",
                "Tracking Path Changes",
@@ -38,13 +38,13 @@ const SideBar=()=>{
     return(
         <aside className='asideWrapper'>
             <ul>
-        {menuItems.map((item) => (
+        {menuItems.map((item, i) => (
           <li
-            key={item}
-            className={`menu-item ${active === item ? "active" : ""}`}
-            onClick={() => setActive(item)}
+            key={i}
+            className={`menu-item ${active === item?.slug ? "active" : ""}`}
+            onClick={() => setActive(item?.slug)}
           >
-            {item}
+            {item?.label}
           </li>
         ))}
       </ul>
