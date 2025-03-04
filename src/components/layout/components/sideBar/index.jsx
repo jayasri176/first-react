@@ -12,12 +12,19 @@ const SideBar = () => {
         {
           label: 'Introduction',
           key: 'git-introduction',
-          subItems: []
+          subItems: [
+            'git version control',
+            'git history',
+            'git features',
+          ]
         },
         {
           label: 'Installation of Git',
           key: 'intallation-of-git',
           subItems: [
+            'git installation',
+            'git configuration',
+            'git basic commands',
 
           ]
         }
